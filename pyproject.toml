@@ -1,5 +1,5 @@
 [project]
-name = "PyForumTp2"
+name = "PyForum"
 version = "0.1.0"
 description = "Projet de forum en Python"
 readme = "README.md"
