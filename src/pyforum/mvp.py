@@ -57,8 +57,8 @@ def main():
             titre = input("Entrez le titre de la publication: ")
             contenu = input("Entrez le contenu de la publication: ")
             forum_id = input("Entrez l'ID du forum: ")
-            utilisateur_id = input("Entrez l'ID de l'utilisateur: ")
-            publication = {'titre': titre, 'contenu': contenu, 'forum_id': forum_id, 'utilisateur_id': utilisateur_id}
+            auteur_id = input("Entrez l'ID de l'auteur: ")
+            publication = {'titre': titre, 'contenu': contenu, 'forum_id': forum_id, 'auteur_id': utilisateur_id}
             db.creer_publication(titre, contenu, forum_id, utilisateur_id)
             # TODO: Ajouter ici la logique pour demander des informations à l'utilisateur
             # TODO: Ajouter l'appel à la base de donnée pour créer la publication
@@ -67,7 +67,7 @@ def main():
             # Ajouter un commentaire
             print("\nAjouter un commentaire...")
             contenu = input("Entrez le contenu du commentaire: ")
-            auteur_id = input("Entrez l'ID de la auteur: ")
+            auteur_id = input("Entrez l'ID de l'auteur: ")
             publication_id = input("Entrez l'ID de la publication: ")
             commentaire = {'contenu': contenu, 'auteur_id': auteur_id, 'publication_id': publication_id}
             db.ajouter_commentaire(contenu, auteur_id, publication_id)
