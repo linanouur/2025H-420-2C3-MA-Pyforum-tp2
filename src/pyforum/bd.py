@@ -6,6 +6,7 @@ import os
 import json
 import csv
 from datetime import datetime
+DATA_FOLDER = "data"
 
 
 class BD:
@@ -15,7 +16,7 @@ class BD:
         self.publications: list[Publication] = []
         self.commentaires: list[Commentaire] = []
         print("Base de données initialisée.") 
-        os.makedirs("data", exist_ok=True)  
+        os.makedirs(DATA_FOLDER, exist_ok=True)  
         self.charger_donnees()
 
     def creer_utilisateur(self, username: str, email: str, mot_de_passe: str) -> Utilisateur:
@@ -92,7 +93,7 @@ class BD:
                 writer.writerow([u.id, u.username, u.email, u.mot_de_passe, json.dumps(u.forums)])
 
     def charger_utilisateurs(self):
-        path = os.path.join(data, "utilisateurs.csv")
+        path = os.path.join(DATA_FOLDER, "utilisateurs.csv")
         if not os.path.exists(path):
             return
         with open(path, newline="", encoding="utf-8") as f:
@@ -103,7 +104,7 @@ class BD:
                 self.utilisateurs.append(u)
 
     def sauvegarder_forums(self):
-        path = os.path.join(data, "forums.csv")
+        path = os.path.join(DATA_FOLDER, "forums.csv")
         with open(path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerow(["id", "nom", "description", "publications"])
@@ -111,7 +112,7 @@ class BD:
                 writer.writerow([forum.id, forum.nom, forum.description, json.dumps(forum.publications)])
 
     def charger_forums(self):
-        path = os.path.join(data, "forums.csv")
+        path = os.path.join(DATA_FOLDER, "forums.csv")
         if not os.path.exists(path):
             return
         with open(path, newline="", encoding="utf-8") as f:
@@ -122,7 +123,7 @@ class BD:
                 self.forums.append(forum)
 
     def sauvegarder_publications(self):
-        path = os.path.join(data, "publications.csv")
+        path = os.path.join(DATA_FOLDER, "publications.csv")
         with open(path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerow(["id", "titre", "contenu", "date_creation", "auteur_id", "forum_id", "commentaires"])
@@ -130,7 +131,7 @@ class BD:
                 writer.writerow([pub.id, pub.titre, pub.contenu, pub.date_creation, pub.auteur_id, pub.forum_id, json.dumps(pub.commentaires)])
 
     def charger_publications(self):
-        path = os.path.join(data, "publications.csv")
+        path = os.path.join(DATA_FOLDER, "publications.csv")
         if not os.path.exists(path):
             return
         with open(path, newline="", encoding="utf-8") as f:
@@ -142,7 +143,7 @@ class BD:
                 self.publications.append(pub)
 
     def sauvegarder_commentaires(self):
-        path = os.path.join(data, "commentaires.csv")
+        path = os.path.join(DATA_FOLDER, "commentaires.csv")
         with open(path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerow(["id", "auteur_id", "contenu", "publication_id"])
@@ -150,7 +151,7 @@ class BD:
                 writer.writerow([c.id, c.auteur_id, c.contenu, c.publication_id])
 
     def charger_commentaires(self):
-        path = os.path.join(data, "commentaires.csv")
+        path = os.path.join(DATA_FOLDER, "commentaires.csv")
         if not os.path.exists(path):
             return
         with open(path, newline="", encoding="utf-8") as f:
