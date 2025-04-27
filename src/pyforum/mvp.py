@@ -46,8 +46,8 @@ def main():
             print("\nCréation d'un forum...")
             nom = input("Entrez le nom du forum: ")
             description = input("Entrez la description du forum: ")
-            forum = {'nom': nom, 'description': description}
-            db.creer_forum(nom, description)
+            Forum = {'nom': nom, 'description': description}
+            db.creer_forum(**Forum)
             # TODO: Ajouter ici la logique pour demander des informations à l'utilisateur
             # TODO: Ajouter l'appel à la base de donnée pour créer le forum
 
@@ -58,8 +58,8 @@ def main():
             contenu = input("Entrez le contenu de la publication: ")
             forum_id = input("Entrez l'ID du forum: ")
             auteur_id = input("Entrez l'ID de l'auteur: ")
-            publication = {'titre': titre, 'contenu': contenu, 'forum_id': forum_id, 'auteur_id': utilisateur_id}
-            db.creer_publication(titre, contenu, forum_id, utilisateur_id)
+            Publication = {'titre': titre, 'contenu': contenu, 'forum_id': forum_id, 'auteur_id': auteur_id}
+            db.creer_publication(**Publication)
             # TODO: Ajouter ici la logique pour demander des informations à l'utilisateur
             # TODO: Ajouter l'appel à la base de donnée pour créer la publication
 
@@ -69,8 +69,8 @@ def main():
             contenu = input("Entrez le contenu du commentaire: ")
             auteur_id = input("Entrez l'ID de l'auteur: ")
             publication_id = input("Entrez l'ID de la publication: ")
-            commentaire = {'contenu': contenu, 'auteur_id': auteur_id, 'publication_id': publication_id}
-            db.ajouter_commentaire(contenu, auteur_id, publication_id)
+            Commentaire = {'contenu': contenu, 'auteur_id': auteur_id, 'publication_id': publication_id}
+            db.creer_commentaire(**Commentaire)
 
             # TODO: Ajouter ici la logique pour demander des informations à l'utilisateur
             # TODO: Ajouter l'appel à la base de donnée pour créer le commentaire
@@ -78,9 +78,8 @@ def main():
         elif choix == '5':
             # Joindre un forum
             print("\nJoindre un forum...")
-            forum_id = input("Entrez l'ID du forum: ")
-            utilisateur_id = input("Entrez l'ID de l'utilisateur: ")
-            db.joindre_forum(forum_id, utilisateur_id)
+            nom = input("Entrez le nom du forum: ")
+            db.obtenir_forum_par_nom(nom)
 
 
             # TODO: Ajouter ici la logique pour demander des informations à l'utilisateur
