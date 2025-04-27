@@ -32,7 +32,9 @@ def main():
             # Voici un exemple trivial de création d'un utilisateur. Vous devez le bonifier,
             # car il ne prend en compte que le nom d'utilisateur.
             username = input("Entrez le nom d'utilisateur: ")
-            utilisateur = {'username': username}
+            email = input("Entrez l'email: ")
+            mot_de_passe = input("Entrez le mot de passe: ")
+            utilisateur = {'username': username,'email': email, 'mot_de_passe': mot_de_passe}
             # TODO: Ajouter ici la logique pour demander des informations à l'utilisateur
 
             # Le **utilisateur est une syntaxe Python pour déballer un dictionnaire.
@@ -42,24 +44,45 @@ def main():
         elif choix == '2':
             # Créer un forum
             print("\nCréation d'un forum...")
+            nom = input("Entrez le nom du forum: ")
+            description = input("Entrez la description du forum: ")
+            forum = {'nom': nom, 'description': description}
+            db.creer_forum(nom, description)
             # TODO: Ajouter ici la logique pour demander des informations à l'utilisateur
             # TODO: Ajouter l'appel à la base de donnée pour créer le forum
 
         elif choix == '3':
             # Créer une publication
             print("\nCréation d'une publication...")
+            titre = input("Entrez le titre de la publication: ")
+            contenu = input("Entrez le contenu de la publication: ")
+            forum_id = input("Entrez l'ID du forum: ")
+            utilisateur_id = input("Entrez l'ID de l'utilisateur: ")
+            publication = {'titre': titre, 'contenu': contenu, 'forum_id': forum_id, 'utilisateur_id': utilisateur_id}
+            db.creer_publication(titre, contenu, forum_id, utilisateur_id)
             # TODO: Ajouter ici la logique pour demander des informations à l'utilisateur
             # TODO: Ajouter l'appel à la base de donnée pour créer la publication
 
         elif choix == '4':
             # Ajouter un commentaire
             print("\nAjouter un commentaire...")
+            contenu = input("Entrez le contenu du commentaire: ")
+            auteur_id = input("Entrez l'ID de la auteur: ")
+            publication_id = input("Entrez l'ID de la publication: ")
+            commentaire = {'contenu': contenu, 'auteur_id': auteur_id, 'publication_id': publication_id}
+            db.ajouter_commentaire(contenu, auteur_id, publication_id)
+
             # TODO: Ajouter ici la logique pour demander des informations à l'utilisateur
             # TODO: Ajouter l'appel à la base de donnée pour créer le commentaire
 
         elif choix == '5':
             # Joindre un forum
             print("\nJoindre un forum...")
+            forum_id = input("Entrez l'ID du forum: ")
+            utilisateur_id = input("Entrez l'ID de l'utilisateur: ")
+            db.joindre_forum(forum_id, utilisateur_id)
+
+
             # TODO: Ajouter ici la logique pour demander des informations à l'utilisateur
             # TODO: Ajouter les appels à la base de donnée pour ajouter l'utilisateur au forum
 
